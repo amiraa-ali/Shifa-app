@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:nav1/Booking.dart';
 import 'package:nav1/Details.dart';
-// import 'package:nav1/homepage.dart';
-// import 'package:nav1/profile.dart';
-
-
+// import 'package:nav1/Details.dart';
 
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
@@ -52,7 +48,6 @@ import 'package:nav1/Details.dart';
 //     {'name': 'Dr. Ahmed Ali', 'specialty': 'Cardiologist'},
 //     {'name': 'Dr. Sara Mahmoud', 'specialty': 'Cardiologist'},
 //     {'name': 'Dr. Mohamed Mostafa', 'specialty': 'Cardiologist'},
-    
 //   ];
 
 //   @override
@@ -113,15 +108,6 @@ import 'package:nav1/Details.dart';
 //     ];
 //   }
 // }
-
-
-
-
-
-
-
-
-
 
 // -----------------
 // محتوى صفحة Home

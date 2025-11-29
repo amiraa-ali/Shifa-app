@@ -15,7 +15,7 @@ class AllCategoriesPage extends StatelessWidget {
         "color": Color(0xffFF8A65),
       },
     ];
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text("All Categories"),
