@@ -16,158 +16,173 @@ class DoctorDetailsPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // اسم الدكتور بشكل دائري في الأعلى
+            // ================= HEADER =================
             Container(
+              height: 180,
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
                   colors: [gradientColorStart, gradientColorEnd],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
                 ),
               ),
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.white.withOpacity(0.3),
-                    child: const Icon(Icons.person, size: 50, color: Colors.white),
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    doctor['name'],
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () => Navigator.pop(context),
+                        child: const CircleAvatar(
+                          backgroundColor: Colors.white24,
+                          child: Icon(Icons.arrow_back, color: Colors.white),
+                        ),
+                      ),
+                      const Spacer(),
+                           const Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 42.0),
+                    child: Text(
+                      "Details",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20, // حجم كبير
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  Text(
-                    doctor['specialty'],
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
-                    ),
+                ),
+              ),
+                      const Spacer(),
+                    ],
                   ),
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
 
-            // محتوى الصفحة بالأسفل
+            // ================= DOCTOR NAME =================
+            Text(
+              doctor['name'],
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff009f93),
+              ),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              doctor['specialty'],
+              style: const TextStyle(color: Colors.grey),
+            ),
+
+            const SizedBox(height: 20),
+
+            // ================= BODY =================
             Expanded(
-              child: Container(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // وصف الدكتور
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Text(
-                          'About Dr. ${doctor['name']}',style: TextStyle(   fontSize: 16,
-                            color: gradientColorStart,
-                            height: 1.5,
-                            fontWeight: FontWeight.bold),
-                         
-                          ),
-                        ),
-                      
-                        Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Text(
-                          'Dr. ${doctor['name']} is a highly experienced ${doctor['specialty']}. '
-                          'He has been practicing for over 10 years and is known for his dedication and expertise. '
-                          'He provides comprehensive care and ensures patient satisfaction with personalized treatment plans.',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: gradientColorStart,
-                            height: 1.5,
-                           
-                          ),
-                        ),
+                child: Column(
+                  children: [
+                    // ========== ABOUT ME CARD ==========
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 15),
+                      decoration: BoxDecoration(
+                        color: const Color(0xfff8f7fb),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      // مواقع العيادات
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: const Text(
-                          'Clinics Locations:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: gradientColorStart,
-                          ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('• 123 Main Street, City Center', style: TextStyle(color: gradientColorEnd)),
-                            Text('• 45 Elm Street, Uptown', style: TextStyle(color: gradientColorEnd)),
-                            Text('• 78 Oak Avenue, Downtown', style: TextStyle(color: gradientColorEnd)),
-                          ],
-                        ),
-                      ),
-                      // أوقات العمل
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: const Text(
-                          'Working Hours:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: gradientColorStart,
-                          ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 30),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Mon - Fri: 09:00 AM - 05:00 PM', style: TextStyle(color: gradientColorEnd)),
-                            Text('Sat: 10:00 AM - 02:00 PM', style: TextStyle(color: gradientColorEnd)),
-                            Text('Sun: Closed', style: TextStyle(color: gradientColorEnd)),
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: gradientColorStart,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          child: const Text(
-                            'Book Appointment',
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "About me",
                             style: TextStyle(
-                              fontSize: 16,
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => const BookAppointmentPage()),
-                            );
-                          },
-                        ),
+                          const SizedBox(height: 10),
+                          Text(
+                            " ${doctor['name']} is the top most immunologists specialist in "
+                            "Christ Hospital at London. He achieved several awards "
+                            "for her wonderful contribution in medical field. "
+                            "He is available for private consultation.",
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 20),
-                    ],
+                    ),
+
+                    // ========== WORKING TIME CARD ==========
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 40),
+                      decoration: BoxDecoration(
+                        color: const Color(0xfff8f7fb),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Working Time",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Monday - Friday, 08:00 AM - 20:00 PM",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // ================= BOOK BUTTON =================
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: gradientColorEnd,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const BookAppointmentPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Book an Appointment",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
