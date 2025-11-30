@@ -1,237 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:nav1/Details.dart';
+// import 'package:nav1/homepage.dart';
 // import 'package:nav1/Details.dart';
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: MainAppScreen(),
-//     );
-//   }
-// }
+class Doctor {
+  final String name;
+  final String specialty;
+  final double rating;
+  final int yearsExp;
+  final String location;
+  final double distance;
 
-// class MainAppScreen extends StatefulWidget {
-//   const MainAppScreen({super.key});
+  Doctor({
+    required this.name,
+    required this.specialty,
+    required this.rating,
+    required this.yearsExp,
+    required this.location,
+    required this.distance,
+  });
+}
 
-//   @override
-//   State<MainAppScreen> createState() => _MainAppScreenState();
-// }
+final List<Doctor> doctors = [
+  Doctor(name: 'Dr. Amira Ali', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. shorouk Abdelaleem', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Wafaa Hamada', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Doha Ahmed', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Zeyad hassanien', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Sarah Johnson', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Mohamed Ali', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Ahmed Ali', specialty: 'Cardiologist', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Michael Chen', specialty: 'Orthopedic Surgeon', rating: 4.8, yearsExp: 15, location: 'Memorial Clinic', distance: 1.8),
+  Doctor(name: 'Dr. Emily Roberts', specialty: 'General Physician', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
+];
 
-// class _MainAppScreenState extends State<MainAppScreen> {
-//   int _currentIndex = 0;
-
-//   // Navigator Keys لكل صفحة
-//   final _navigatorKeys = [
-//     GlobalKey<NavigatorState>(),
-//     GlobalKey<NavigatorState>(),
-//     GlobalKey<NavigatorState>(),
-//     GlobalKey<NavigatorState>(),
-//   ];
-
-//   // بيانات المستخدم
-//   final List<Map<String, dynamic>> homeCategoriesGrid = [
-//     {"name": "Cardiology", "icon": Icons.favorite, "color": Color(0xffE57373)},
-//     {"name": "Eyes", "icon": Icons.remove_red_eye, "color": Color(0xff64B5F6)},
-//     {"name": "Bones", "icon": Icons.accessibility_new, "color": Color(0xff81C784)},
-//     {"name": "Dermatology", "icon": Icons.face, "color": Color(0xffBA68C8)},
-//     {"name": "Dentist", "icon": Icons.medical_services, "color": Color(0xffFFD54F)},
-//     {"name": "Neurology", "icon": Icons.psychology, "color": Color(0xff4DD0E1)},
-//   ];
-
-//   final List<Map<String, dynamic>> doctors = [
-//     {'name': 'Dr. Ahmed Ali', 'specialty': 'Cardiologist'},
-//     {'name': 'Dr. Sara Mahmoud', 'specialty': 'Cardiologist'},
-//     {'name': 'Dr. Mohamed Mostafa', 'specialty': 'Cardiologist'},
-//     {'name': 'Dr. Ahmed Ali', 'specialty': 'Cardiologist'},
-//     {'name': 'Dr. Sara Mahmoud', 'specialty': 'Cardiologist'},
-//     {'name': 'Dr. Mohamed Mostafa', 'specialty': 'Cardiologist'},
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: IndexedStack(
-//         index: _currentIndex,
-//         children: List.generate(_pages().length, (index) {
-//           return Navigator(
-//             key: _navigatorKeys[index],
-//             onGenerateRoute: (settings) {
-//               return MaterialPageRoute(builder: (_) => _pages()[index]);
-//             },
-//           );
-//         }),
-//       ),
-//       bottomNavigationBar: BottomNavigationBar(
-//         currentIndex: _currentIndex,
-//         type: BottomNavigationBarType.fixed,
-//         selectedItemColor: Colors.teal,
-//         unselectedItemColor: Colors.grey,
-//         iconSize: 28,
-//         onTap: (index) {
-//           if (_currentIndex == index) {
-//             _navigatorKeys[index].currentState!.popUntil((route) => route.isFirst);
-//           } else {
-//             setState(() => _currentIndex = index);
-//           }
-//         },
-//         items: const [
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.home_outlined),
-//               activeIcon: Icon(Icons.home),
-//               label: "Home"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.book_outlined),
-//               activeIcon: Icon(Icons.book),
-//               label: "Bookings"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.chat_bubble_outline),
-//               activeIcon: Icon(Icons.chat_bubble),
-//               label: "Chat"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.person_outline),
-//               activeIcon: Icon(Icons.person),
-//               label: "Profile"),
-//         ],
-//       ),
-//     );
-//   }
-
-//   List<Widget> _pages() {
-//     return [
-//       HomeScreen(),
-//       const BookAppointmentPage(),
-//       const ChatPage(),
-//       const ProfilePage(),
-//     ];
-//   }
-// }
-
-// -----------------
-// محتوى صفحة Home
-// -----------------
-// class HomeScreenContent extends StatelessWidget {
-//   final List<Map<String, dynamic>> homeCategoriesGrid;
-//   final List<Map<String, dynamic>> doctors;
-
-//   const HomeScreenContent({super.key, required this.homeCategoriesGrid, required this.doctors});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//       child: Column(
-//         children: [
-//           _buildHeaderAndSearch(context),
-//           const SizedBox(height: 20),
-//           // Categories
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 20),
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 const Text('Categories', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-//                 GestureDetector(
-//                   onTap: () {},
-//                   child: const Text('See All', style: TextStyle(color: Colors.blueAccent)),
-//                 ),
-//               ],
-//             ),
-//           ),
-//           const SizedBox(height: 10),
-//           SizedBox(
-//             height: 100,
-//             child: ListView.separated(
-//               scrollDirection: Axis.horizontal,
-//               padding: const EdgeInsets.symmetric(horizontal: 20),
-//               itemCount: homeCategoriesGrid.length,
-//               separatorBuilder: (_, __) => const SizedBox(width: 15),
-//               itemBuilder: (context, index) {
-//                 final item = homeCategoriesGrid[index];
-//                 return GestureDetector(
-//                   onTap: () {
-//                     Navigator.push(
-//                         context,
-//                         MaterialPageRoute(
-//                             builder: (_) => DoctorsPage(
-//                                   categoryName: item["name"],
-//                                   doctors: doctors,
-//                                 )));
-//                   },
-//                   child: Container(
-//                     width: 80,
-//                     decoration: BoxDecoration(
-//                       gradient: LinearGradient(
-//                         colors: [item["color"].withOpacity(0.8), item["color"]],
-//                         begin: Alignment.topLeft,
-//                         end: Alignment.bottomRight,
-//                       ),
-//                       borderRadius: BorderRadius.circular(15),
-//                     ),
-//                     child: Column(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         Container(
-//                           decoration: BoxDecoration(
-//                             color: Colors.white.withOpacity(0.2),
-//                             shape: BoxShape.circle,
-//                           ),
-//                           padding: const EdgeInsets.all(6),
-//                           child: Icon(item["icon"], color: Colors.white, size: 22),
-//                         ),
-//                         const SizedBox(height: 6),
-//                         Text(item["name"], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-//                       ],
-//                     ),
-//                   ),
-//                 );
-//               },
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _buildHeaderAndSearch(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-//       decoration: const BoxDecoration(
-//         gradient: LinearGradient(colors: [Color(0xFF2ECC71), Color(0xFF1ABC9C)]),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           const Text('Welcome back,\nZeyad Hassanien',
-//               style: TextStyle(color: Colors.white, fontSize: 22)),
-//           const SizedBox(height: 20),
-//           Container(
-//             height: 50,
-//             padding: const EdgeInsets.symmetric(horizontal: 15),
-//             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
-//             child: const TextField(
-//               decoration: InputDecoration(
-//                 hintText: 'Find your doctor or clinic...',
-//                 border: InputBorder.none,
-//                 icon: Icon(Icons.search),
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// -----------------
-// صفحة دكاترة
-// -----------------
 
 class DoctorsPage extends StatelessWidget {
   final String categoryName;
-  final List<Map<String, dynamic>> doctors;
-
+  final List<Doctor> doctors;
   const DoctorsPage({super.key, required this.categoryName, required this.doctors});
 
   @override
@@ -296,7 +102,7 @@ class DoctorsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            doctor['name'],
+                            doctor.name,
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -305,7 +111,7 @@ class DoctorsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            doctor['specialty'],
+                            doctor.specialty,
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.white.withOpacity(0.9),

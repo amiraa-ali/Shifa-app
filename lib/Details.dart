@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nav1/Booking.dart';
+import 'package:nav1/Doctorpage.dart';
+// import 'package:nav1/homepage.dart';
 
 class DoctorDetailsPage extends StatelessWidget {
-  final Map<String, dynamic> doctor;
+ final Doctor doctor;
+
 
   const DoctorDetailsPage({super.key, required this.doctor});
 
@@ -71,7 +74,7 @@ class DoctorDetailsPage extends StatelessWidget {
 
             // ================= DOCTOR NAME =================
             Text(
-              doctor['name'],
+              doctor.name,
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -80,7 +83,7 @@ class DoctorDetailsPage extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Text(
-              doctor['specialty'],
+              doctor.specialty,
               style: const TextStyle(color: Colors.grey),
             ),
 
@@ -113,7 +116,7 @@ class DoctorDetailsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            " ${doctor['name']} is the top most immunologists specialist in "
+                            " ${doctor.name} is the top most immunologists specialist in "
                             "Christ Hospital at London. He achieved several awards "
                             "for her wonderful contribution in medical field. "
                             "He is available for private consultation.",

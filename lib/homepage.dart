@@ -1,175 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:nav1/Booking.dart';
 import 'package:nav1/Categories.dart';
 import 'package:nav1/Doctorpage.dart';
 import 'package:nav1/profile.dart';
-
-final List<Map<String, dynamic>> homeCategoriesGrid = [
-  {
-    "name": "Cardiology",
-    "icon": Icons.favorite,
-    "color": Color(0xffE57373),
-  },
-  {
-    "name": "Eyes",
-    "icon": Icons.remove_red_eye,
-    "color": Color(0xff64B5F6),
-  },
-  {
-    "name": "Bones",
-    "icon": Icons.accessibility_new,
-    "color": Color(0xff81C784),
-  },
-  {
-    "name": "Dermatology",
-    "icon": Icons.face,
-    "color": Color(0xffBA68C8),
-  },
-  {
-    "name": "Dentist",
-    "icon": Icons.medical_services,
-    "color": Color(0xffFFD54F),
-  },
-  {
-    "name": "Neurology",
-    "icon": Icons.psychology,
-    "color": Color(0xff4DD0E1),
-  },
-  // التخصصات الجديدة
-  {
-    "name": "Psychology",
-    "icon": Icons.psychology_outlined,
-    "color": Color(0xffFF8A65),
-  },
-  {
-    "name": "Pediatrics",
-    "icon": Icons.child_care,
-    "color": Color(0xff4DB6AC),
-  },
-  {
-    "name": "Orthopedics",
-    "icon": Icons.fitness_center,
-    "color": Color(0xff9575CD),
-  },
-  {
-    "name": "ENT",
-    "icon": Icons.hearing,
-    "color": Color(0xffF06292),
-  },
-  {
-    "name": "Gynecology",
-    "icon": Icons.pregnant_woman,
-    "color": Color(0xffFFB74D),
-  },
-  {
-    "name": "General Surgery",
-    "icon": Icons.medical_services_outlined,
-    "color": Color(0xff4FC3F7),
-  },
-];
-
-
-final List<Map<String, dynamic>> doctors = [
-  {
-    'name': 'Dr. Amira Ali',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. shorouk Abdelaleem',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Wafaa Hamada',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Doha Ahmed',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Zeyad hassanien',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Sarah Johnson',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Mohamed Ali',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Ahmed Ali',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-    {
-    'name': 'Dr. Sarah Johnson',
-    'specialty': 'Cardiologist',
-    'rating': 4.9,
-    'yearsExp': 12,
-    'location': 'City Hospital',
-    'distance': 2.5,
-    'imagePath': 'assets/images/doc1.png',
-  },
-  {
-    'name': 'Dr. Michael Chen',
-    'specialty': 'Orthopedic Surgeon',
-    'rating': 4.8,
-    'yearsExp': 15,
-    'location': 'Memorial Clinic',
-    'distance': 1.8,
-    'imagePath': 'assets/images/doc2.png',
-  },
-  {
-    'name': 'Dr. Emily Roberts',
-    'specialty': 'General Physician',
-    'rating': 4.7,
-    'yearsExp': 8,
-    'location': 'Health Center',
-    'distance': 3.1,
-    'imagePath': 'assets/images/doc3.png',
-  },
-];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -187,13 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _pages = [
-      HomeScreenContent(
-        homeCategoriesGrid: homeCategoriesGrid,
-        doctors: doctors,
-      ), // Home
-      const AllCategoriesPage(), // Bookings
-      const ChatPage(), // Chat
-      const ProfilePage(), // Profile
+      HomeScreenContent(categories: homeCategories, doctors: doctors),
+      const AllCategoriesPage(),
+      const ChatPage(),
+      const ProfilePage(),
     ];
   }
 
@@ -208,49 +37,32 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
       currentIndex: _bottomNavIndex,
-      onTap: (index) {
-        setState(() => _bottomNavIndex = index);
-      },
+      onTap: (index) => setState(() => _bottomNavIndex = index),
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.teal,
       unselectedItemColor: Colors.grey,
       iconSize: 28,
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home),
-          label: "Home",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.book_outlined),
-          activeIcon: Icon(Icons.book),
-          label: "Bookings",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.chat_bubble_outline),
-          activeIcon: Icon(Icons.chat_bubble),
-          label: "Chat",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          activeIcon: Icon(Icons.person),
-          label: "Profile",
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.book), label: "Bookings"),
+        BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: "Chat"),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
       ],
     );
   }
 }
 
-// -----------------
-// محتوى صفحة Home مع تمرير البيانات
-// -----------------
+
+// ----------------------------
+// 6) Home Content
+// ----------------------------
 class HomeScreenContent extends StatelessWidget {
-  final List<Map<String, dynamic>> homeCategoriesGrid;
-  final List<Map<String, dynamic>> doctors;
+  final List<Category> categories;
+  final List<Doctor> doctors; 
 
   const HomeScreenContent({
     super.key,
-    required this.homeCategoriesGrid,
+    required this.categories,
     required this.doctors,
   });
 
@@ -259,62 +71,57 @@ class HomeScreenContent extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _buildHeaderAndSearch(context),
+          _buildHeaderAndSearch(),
           const SizedBox(height: 20),
-          // Categories
+
+          // Title + See All
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Categories',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
+                const Text('Categories',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AllCategoriesPage(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    'See All',
-                    style: TextStyle(color: Colors.blueAccent),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const AllCategoriesPage()),
                   ),
+                  child: const Text('See All',
+                      style: TextStyle(color: Colors.blueAccent)),
                 ),
               ],
             ),
           ),
+
           const SizedBox(height: 10),
+
+          // Horizontal Category List
           SizedBox(
             height: 100,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              itemCount: homeCategoriesGrid.length,
+              itemCount: categories.length,
               separatorBuilder: (_, __) => const SizedBox(width: 15),
               itemBuilder: (context, index) {
-                final item = homeCategoriesGrid[index];
+                final item = categories[index];
                 return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => DoctorsPage(
-                          categoryName: item["name"],
-                          doctors: doctors,
-                        ),
-                      ),
-                    );
-                  },
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          DoctorsPage(categoryName: item.name, doctors: doctors),
+                    ),
+                  ),
                   child: Container(
                     width: 80,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [item["color"].withOpacity(0.8), item["color"]],
+                        colors: [
+                          item.color.withOpacity(0.8),
+                          item.color,
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -324,24 +131,18 @@ class HomeScreenContent extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
+                          padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.2),
                             shape: BoxShape.circle,
                           ),
-                          padding: const EdgeInsets.all(6),
-                          child: Icon(
-                            item["icon"],
-                            color: Colors.white,
-                            size: 22,
-                          ),
+                          child: Icon(item.icon, color: Colors.white, size: 22),
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          item["name"],
+                          item.name,
                           style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -355,13 +156,12 @@ class HomeScreenContent extends StatelessWidget {
     );
   }
 
-  Widget _buildHeaderAndSearch(BuildContext context) {
+  Widget _buildHeaderAndSearch() {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF2ECC71), Color(0xFF1ABC9C)],
-        ),
+        gradient:
+            LinearGradient(colors: [Color(0xFF2ECC71), Color(0xFF1ABC9C)]),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -393,11 +193,12 @@ class HomeScreenContent extends StatelessWidget {
 }
 
 
-// -----------------
-// chat page وهميه 
-// -----------------
+// ----------------------------
+// Fake Chat Page
+// ----------------------------
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text("Chat Page"));
