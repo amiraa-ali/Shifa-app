@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/SignUp.dart';
-import 'package:nav1/login.dart';
+import 'SignUp.dart';
+import 'login.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
-    ),
+    const MaterialApp(debugShowCheckedModeBanner: false, home: WelcomeScreen()),
   );
 }
 
@@ -50,10 +47,7 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(
-                  "assets/logo remover.png",
-                  fit: BoxFit.cover,
-                ),
+                Image.asset("images/logo.png", fit: BoxFit.cover),
                 const SizedBox(height: 10),
                 const Text(
                   "Your Smart Health Companion",
@@ -74,7 +68,9 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -102,7 +98,9 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SignUpPage()),
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpPage(),
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -128,5 +126,3 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
-
-

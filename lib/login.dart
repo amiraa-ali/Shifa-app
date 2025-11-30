@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/SignUp.dart';
-import 'package:nav1/homepage.dart';
+import 'SignUp.dart';
+import 'doctor_home_screen.dart';
+import 'homepage.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: LoginPage(),
-  ));
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: LoginPage()),
+  );
 }
 
 class LoginPage extends StatefulWidget {
@@ -31,20 +31,19 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             key: formKey,
             child: Column(
-  children: [
-    Image.asset(
-      'assets/logo remover.png',
-      // fit:BoxFit.fill ,
-    ),
-              
-                
+              children: [
+                Image.asset(
+                  'images/logo.png',
+                  // fit:BoxFit.fill ,
+                ),
+
                 const SizedBox(height: 30),
-//////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////
                 TextFormField(
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                     prefixIcon:Icon(Icons.email),
+                    prefixIcon: Icon(Icons.email),
                     labelText: "Email or Phone",
                     hintText: "Enter your email or phone number",
                     border: OutlineInputBorder(
@@ -60,8 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (value.length != 11) {
                         return "Enter valid phone number";
                       }
-                    }
-                    else if (RegExp(r'^[a-zA-Z0-9@._-]+$').hasMatch(value)) {
+                    } else if (RegExp(r'^[a-zA-Z0-9@._-]+$').hasMatch(value)) {
                       if (!value.contains('@') || !value.contains('.')) {
                         return "Enter valid email address";
                       }
@@ -76,24 +74,24 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 15),
 
                 //////////////////////////////////////////////
-               TextFormField(
-  controller: passwordController,
-  obscureText: true,
-  decoration: InputDecoration(
-    labelText: "Password",
-    hintText: "Enter your password",
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
-    prefixIcon: Icon(Icons.lock), // ← هنا بنحط الأيقونة
-  ),
-  validator: (value) {
-    if (value!.isEmpty) return "Password is required";
-    if (value.length < 6) return "At least 6 characters";
-    return null;
-  },
-),
-////////////////////////////////////////////////////////////
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    hintText: "Enter your password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    prefixIcon: Icon(Icons.lock), // ← هنا بنحط الأيقونة
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) return "Password is required";
+                    if (value.length < 6) return "At least 6 characters";
+                    return null;
+                  },
+                ),
+                ////////////////////////////////////////////////////////////
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -108,48 +106,48 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 15),
 
                 /////////////////////////////////////////////
-              SizedBox(
-  width: double.infinity,
-  child: MaterialButton(
-    onPressed: () {
-      // التحقق قبل الانتقال
-      if (formKey.currentState!.validate()) {
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
-          ),
-        );
-
-      } else {
-        // لو في حاجة ناقصة → مش هيروح
-        // مفيش داعي تعملى حاجة هنا لأن الـ validator بيظهر الرسالة تلقائي
-      }
-    },
-    color: Colors.teal,
-    padding: const EdgeInsets.symmetric(vertical: 15),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: const Text(
-      "Continue as Patient",
-      style: TextStyle(
-        fontSize: 16,
-        color: Colors.white,
-      ),
-    ),
-  ),
-),
-
-
-                const SizedBox(height: 10),
-
-               ///////////////////////////////////
-                 SizedBox(
+                SizedBox(
                   width: double.infinity,
                   child: MaterialButton(
                     onPressed: () {
+                      // التحقق قبل الانتقال
+                      if (formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
+                      } else {}
+                    },
+                    color: Colors.teal,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Text(
+                      "Continue as Patient",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                ///////////////////////////////////
+                SizedBox(
+                  width: double.infinity,
+                  child: MaterialButton(
+                    onPressed: () {
+                      // التحقق قبل الانتقال
+                      if (formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DoctorHomeScreen(),
+                          ),
+                        );
+                      } else {}
                     },
                     color: Colors.teal,
                     padding: const EdgeInsets.symmetric(vertical: 15),
@@ -158,39 +156,36 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: const Text(
                       "Continue as Doctor",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
                 ),
 
                 const SizedBox(height: 20),
-////////////////////////////////////////////////////////////
-               Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    const Text("Don't have an account? "),
-    InkWell(
-      onTap: () {
-         Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SignUpPage(),
-        ),
-      );
-      },
-      child: const Text(
-        "Create Account",
-        style: TextStyle(
-          color: Colors.teal,
-          fontWeight: FontWeight.bold,
-                     ),
-                   ),
-                 ),
-                ],
-               ),
+                ////////////////////////////////////////////////////////////
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account? "),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        "Create Account",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

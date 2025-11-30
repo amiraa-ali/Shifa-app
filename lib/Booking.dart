@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/homepage.dart';
+import 'homepage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -134,8 +134,9 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-              color: selected ? activeColor : Colors.grey.shade300,
-              width: selected ? 2 : 1),
+            color: selected ? activeColor : Colors.grey.shade300,
+            width: selected ? 2 : 1,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +151,9 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                 Text(
                   title,
                   style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w500),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ],
             ),
@@ -283,9 +286,20 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 StepIndicator(
-                    number: "1", text: "Date & Time", active: currentStep >= 1),
-                StepIndicator(number: "2", text: "Payment", active: currentStep >= 2),
-                StepIndicator(number: "3", text: "Summary", active: currentStep >= 3),
+                  number: "1",
+                  text: "Date & Time",
+                  active: currentStep >= 1,
+                ),
+                StepIndicator(
+                  number: "2",
+                  text: "Payment",
+                  active: currentStep >= 2,
+                ),
+                StepIndicator(
+                  number: "3",
+                  text: "Summary",
+                  active: currentStep >= 3,
+                ),
               ],
             ),
           ),
@@ -304,8 +318,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                   if (currentStep == 1) ...[
                     const Text(
                       "Select Date",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -320,7 +336,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: visibleDates.map((d) {
-                              bool isActive = d.day == selectedDate.day &&
+                              bool isActive =
+                                  d.day == selectedDate.day &&
                                   d.month == selectedDate.month &&
                                   d.year == selectedDate.year;
                               double width = isActive ? 60 : 50;
@@ -353,11 +370,14 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                       ],
                     ),
                     const SizedBox(height: 40),
+
                     /// ===== Available Time =====
                     const Text(
                       "Available Time",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Wrap(
@@ -392,10 +412,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(22),
                             gradient: const LinearGradient(
-                              colors: [
-                                Color(0xff39ab4a),
-                                Color(0xff009f93),
-                              ],
+                              colors: [Color(0xff39ab4a), Color(0xff009f93)],
                               begin: Alignment.bottomRight,
                               end: Alignment.topLeft,
                             ),
@@ -423,7 +440,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                   if (currentStep == 2) ...[
                     const Text(
                       "Payment Options",
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
                     const SizedBox(height: 20),
 
@@ -457,7 +477,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                     ),
 
                     const SizedBox(height: 40),
-                    
+
                     // 🛑 تم حذف زر "Back to Date & Time" الرمادي من هنا
 
                     // زر المتابعة إلى الملخص
@@ -473,7 +493,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                         ),
                         onPressed: () {
                           // التحقق من صحة الفورم إذا كانت البطاقة مختارة
-                          if (cardSelected && !_formKey.currentState!.validate()) {
+                          if (cardSelected &&
+                              !_formKey.currentState!.validate()) {
                             return; // لا تنتقل إذا كان التحقق فاشلاً
                           }
                           setState(() {
@@ -484,10 +505,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(22),
                             gradient: const LinearGradient(
-                              colors: [
-                                Color(0xff39ab4a),
-                                Color(0xff009f93),
-                              ],
+                              colors: [Color(0xff39ab4a), Color(0xff009f93)],
                               begin: Alignment.bottomRight,
                               end: Alignment.topLeft,
                             ),
@@ -543,16 +561,16 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       decoration: const BoxDecoration(
         // تطبيق الزوايا الدائرية على الأسفل فقط
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(30), 
-          bottomRight: Radius.circular(30), 
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
         ),
         gradient: LinearGradient(
           colors: [
-            Color(0xff39ab4a), // اللون الأخضر الفاتح 
-            Color(0xff009f93), // اللون الفيروزي 
+            Color(0xff39ab4a), // اللون الأخضر الفاتح
+            Color(0xff009f93), // اللون الفيروزي
           ],
-          begin: Alignment.bottomRight, 
-          end: Alignment.topLeft, 
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
         ),
       ),
       child: SafeArea(
@@ -580,8 +598,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                     shape: BoxShape.circle,
                     color: Colors.white24,
                   ),
-                  child: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 20),
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
               const SizedBox(width: 16),
@@ -613,8 +634,12 @@ class StepIndicator extends StatelessWidget {
   final String number;
   final String text;
   final bool active;
-  const StepIndicator(
-      {super.key, required this.number, required this.text, required this.active});
+  const StepIndicator({
+    super.key,
+    required this.number,
+    required this.text,
+    required this.active,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -765,13 +790,9 @@ class BookingInformationCard extends StatelessWidget {
               icon: Icons.calendar_today_outlined,
               label: "Date:",
               value:
-                  "${date.day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][date.month-1]} ${date.year}",
+                  "${date.day} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][date.month - 1]} ${date.year}",
             ),
-            _buildInfoRow(
-              icon: Icons.access_time,
-              label: "Time:",
-              value: time,
-            ),
+            _buildInfoRow(icon: Icons.access_time, label: "Time:", value: time),
             _buildInfoRow(
               icon: Icons.location_on_outlined,
               label: "Location:",
@@ -788,18 +809,18 @@ class BookingInformationCard extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(
-      {required IconData icon, required String label, required String value}) {
+  Widget _buildInfoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
           Icon(icon, color: Colors.grey.shade600, size: 20),
           const SizedBox(width: 10),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 15, color: Colors.grey),
-          ),
+          Text(label, style: const TextStyle(fontSize: 15, color: Colors.grey)),
           const Spacer(),
           Text(
             value,
@@ -841,8 +862,11 @@ class DoctorInformationCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.grey.shade200,
-                  child: const Icon(Icons.person,
-                      color: Colors.grey, size: 30), // Placeholder
+                  child: const Icon(
+                    Icons.person,
+                    color: Colors.grey,
+                    size: 30,
+                  ), // Placeholder
                 ),
                 const SizedBox(width: 15),
                 Column(
@@ -851,7 +875,9 @@ class DoctorInformationCard extends StatelessWidget {
                     Text(
                       doctorName,
                       style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     Text(
                       specialty,
@@ -894,31 +920,33 @@ class PaymentInformationCard extends StatelessWidget {
             ),
             const Divider(),
             _buildPaymentRow(
-                icon: Icons.monetization_on_outlined,
-                label: "Total Amount:",
-                value: totalAmount),
+              icon: Icons.monetization_on_outlined,
+              label: "Total Amount:",
+              value: totalAmount,
+            ),
             _buildPaymentRow(
-                icon: Icons.credit_card,
-                label: "Payment Method:",
-                value: paymentMethod),
+              icon: Icons.credit_card,
+              label: "Payment Method:",
+              value: paymentMethod,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildPaymentRow(
-      {required IconData icon, required String label, required String value}) {
+  Widget _buildPaymentRow({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
           Icon(icon, color: Colors.grey.shade600, size: 20),
           const SizedBox(width: 10),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 15, color: Colors.grey),
-          ),
+          Text(label, style: const TextStyle(fontSize: 15, color: Colors.grey)),
           const Spacer(),
           Text(
             value,
@@ -1003,10 +1031,7 @@ class SummaryStep extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
                 gradient: const LinearGradient(
-                  colors: [
-                    Color(0xff39ab4a),
-                    Color(0xff009f93),
-                  ],
+                  colors: [Color(0xff39ab4a), Color(0xff009f93)],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft,
                 ),
@@ -1060,11 +1085,11 @@ class AppointmentConfirmationPage extends StatelessWidget {
         ),
         gradient: LinearGradient(
           colors: [
-            Color(0xff39ab4a), // اللون الأخضر الفاتح 
-            Color(0xff009f93), // اللون الفيروزي 
+            Color(0xff39ab4a), // اللون الأخضر الفاتح
+            Color(0xff009f93), // اللون الفيروزي
           ],
-          begin: Alignment.bottomRight, 
-          end: Alignment.topLeft, 
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
         ),
       ),
       child: SafeArea(
@@ -1084,8 +1109,11 @@ class AppointmentConfirmationPage extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.white24,
                   ),
-                  child: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 20),
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
               const SizedBox(width: 16),
@@ -1150,13 +1178,13 @@ class AppointmentConfirmationPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       // لون الأيقونة يبقى كما هو لتناسق الخطوات
-                      color: const Color(0xff14B8A6), 
+                      color: const Color(0xff14B8A6),
                       boxShadow: [
                         BoxShadow(
                           color: const Color(0xff14B8A6).withOpacity(0.3),
                           blurRadius: 15,
                           spreadRadius: 5,
-                        )
+                        ),
                       ],
                     ),
                     child: const Icon(
@@ -1184,17 +1212,26 @@ class AppointmentConfirmationPage extends StatelessWidget {
                   Text(
                     "Date: $dateString",
                     style: TextStyle(
-                        fontSize: 16, color: Colors.grey.shade700, height: 1.5),
+                      fontSize: 16,
+                      color: Colors.grey.shade700,
+                      height: 1.5,
+                    ),
                   ),
                   Text(
                     "Time: $selectedTime",
                     style: TextStyle(
-                        fontSize: 16, color: Colors.grey.shade700, height: 1.5),
+                      fontSize: 16,
+                      color: Colors.grey.shade700,
+                      height: 1.5,
+                    ),
                   ),
                   Text(
                     "Doctor: $doctorName ($doctorSpecialty)",
                     style: TextStyle(
-                        fontSize: 16, color: Colors.grey.shade700, height: 1.5),
+                      fontSize: 16,
+                      color: Colors.grey.shade700,
+                      height: 1.5,
+                    ),
                   ),
 
                   const SizedBox(height: 100), // مسافة لدفع زر "Done" للأسفل
@@ -1220,8 +1257,7 @@ class AppointmentConfirmationPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
                     (route) => false,
                   );
                 },
@@ -1229,10 +1265,7 @@ class AppointmentConfirmationPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
                     gradient: const LinearGradient(
-                      colors: [
-                        Color(0xff39ab4a),
-                        Color(0xff009f93),
-                      ],
+                      colors: [Color(0xff39ab4a), Color(0xff009f93)],
                       begin: Alignment.bottomRight,
                       end: Alignment.topLeft,
                     ),

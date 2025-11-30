@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/welcome.dart';
+import 'package:shifa/welcome.dart';
 // import 'homepage.dart';
 
- const String UserName = "Amira Ali "; 
+const String UserName = "Amira Ali ";
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ShifaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class ShifaApp extends StatelessWidget {
+  const ShifaApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

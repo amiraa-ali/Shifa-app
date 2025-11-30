@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/Booking.dart';
-import 'package:nav1/Doctorpage.dart';
+import 'Booking.dart';
+import 'Doctorpage.dart';
 // import 'package:nav1/homepage.dart';
 
 class DoctorDetailsPage extends StatelessWidget {
- final Doctor doctor;
-
+  final Doctor doctor;
 
   const DoctorDetailsPage({super.key, required this.doctor});
 
@@ -48,21 +47,21 @@ class DoctorDetailsPage extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                           const Expanded(
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 42.0),
-                    child: Text(
-                      "Details",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20, // حجم كبير
-                        fontWeight: FontWeight.bold,
+                      const Expanded(
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 42.0),
+                            child: Text(
+                              "Details",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20, // حجم كبير
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
                       const Spacer(),
                     ],
                   ),
@@ -82,10 +81,7 @@ class DoctorDetailsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            Text(
-              doctor.specialty,
-              style: const TextStyle(color: Colors.grey),
-            ),
+            Text(doctor.specialty, style: const TextStyle(color: Colors.grey)),
 
             const SizedBox(height: 20),
 

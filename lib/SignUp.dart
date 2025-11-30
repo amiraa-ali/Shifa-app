@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nav1/homepage.dart';
-import 'package:nav1/login.dart';
+import 'package:shifa/homepage.dart';
+import 'doctor_home_screen.dart';
+import 'login.dart';
 
 void main() {
   runApp(
@@ -74,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: 200,
                       child: Image.asset(
-                        "assets/logo remover.png",
+                        "images/logo.png",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -276,19 +277,33 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       width: double.infinity,
                       child: MaterialButton(
-                        onPressed: () {
+                        /* onPressed: () {
                           if (formKey.currentState!.validate()) {
                             debugPrint(
                               "Email or phone= ${emailController.text} / password= ${passwordController.text}",
                             );
                           }
-                        },
+                        },*/
                         color: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: const BorderSide(color: Colors.teal),
                         ),
+                        onPressed: () {
+                          // التحقق قبل الانتقال
+                          if (formKey.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DoctorHomeScreen(),
+                              ),
+                            );
+                          } else {
+                            // لو في حاجة ناقصة → مش هيروح
+                            // مفيش داعي تعملى حاجة هنا لأن الـ validator بيظهر الرسالة تلقائي
+                          }
+                        },
                         child: const Text(
                           "Continue as Doctor",
                           style: TextStyle(fontSize: 16, color: Colors.teal),
