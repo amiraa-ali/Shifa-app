@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nav1/main.dart';
 
 
 
@@ -21,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   // int _selectedIndex = 3;
   final _formKey = GlobalKey<FormState>();
 
-  final emailController = TextEditingController(text: 'Shorouk Abdelaleem@example.com');
+  final emailController = TextEditingController(text: '$UserName@example.com');
   final phoneController = TextEditingController(text: '01234567890');
   final locationController = TextEditingController(text: 'New York, NY');
   final dobController = TextEditingController(text: 'Jan 15, 1988');

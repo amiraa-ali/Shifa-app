@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nav1/Categories.dart';
 import 'package:nav1/Doctorpage.dart';
+import 'package:nav1/main.dart';
 import 'package:nav1/profile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -166,9 +167,9 @@ class HomeScreenContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Welcome back,\nZeyad Hassanien',
-            style: TextStyle(color: Colors.white, fontSize: 22),
+          Text(
+            'Welcome back,\n $UserName',
+            style: const TextStyle(color: Colors.white, fontSize: 22),
           ),
           const SizedBox(height: 20),
           Container(

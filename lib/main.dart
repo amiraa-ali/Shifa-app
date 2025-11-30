@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:nav1/welcome.dart';
-import 'homepage.dart';
+import 'package:nav1/welcome.dart';
+// import 'homepage.dart';
+
+ const String UserName = "Amira Ali "; 
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: WelcomeScreen(),
-      home: HomeScreen(),
+      home: WelcomeScreen(),
+      // home: HomeScreen(),
     );
   }
 }

@@ -112,8 +112,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         if (value == null || value.isEmpty) {
                           return "Your name is required";
                         }
-                        if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
-                          return "Enter your correct name";
+                        if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
+                          return "Enter a valid full name";
                         }
                         return null;
                       },
@@ -244,40 +244,34 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(height: 40),
 
-                    
-                            SizedBox(
-  width: double.infinity,
-  child: MaterialButton(
-    onPressed: () {
-      // التحقق قبل الانتقال
-      if (formKey.currentState!.validate()) {
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
-          ),
-        );
-
-      } else {
-        // لو في حاجة ناقصة → مش هيروح
-        // مفيش داعي تعملى حاجة هنا لأن الـ validator بيظهر الرسالة تلقائي
-      }
-    },
-    color: Colors.teal,
-    padding: const EdgeInsets.symmetric(vertical: 15),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: const Text(
-      "Continue as Patient",
-      style: TextStyle(
-        fontSize: 16,
-        color: Colors.white,
-      ),
-    ),
-  ),
-),
+                    SizedBox(
+                      width: double.infinity,
+                      child: MaterialButton(
+                        onPressed: () {
+                          // التحقق قبل الانتقال
+                          if (formKey.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ),
+                            );
+                          } else {
+                            // لو في حاجة ناقصة → مش هيروح
+                            // مفيش داعي تعملى حاجة هنا لأن الـ validator بيظهر الرسالة تلقائي
+                          }
+                        },
+                        color: Colors.teal,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Text(
+                          "Continue as Patient",
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     SizedBox(
                       width: double.infinity,
@@ -303,28 +297,28 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(height: 20),
                     Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    const Text("Already have an account?"),
-    InkWell(
-      onTap: () {
-         Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginPage(),
-        ),
-      );
-      },
-      child: const Text(
-        "Login",
-        style: TextStyle(
-          color: Colors.teal,
-          fontWeight: FontWeight.bold,
-                     ),
-                   ),
-                 ),
-                ],
-               ),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Already have an account?"),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
