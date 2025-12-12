@@ -1,218 +1,107 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+import 'package:nav1/homepage.dart';
 
-class ChatScreen extends StatelessWidget {
-  final String doctorName;
-  final String specialty;
-  // يمكنك إضافة مسار صورة الطبيب هنا إذا أردت عرضها
-
-  const ChatScreen({
-    super.key,
-    this.doctorName = 'Dr. Sarah Johnson', // قيمة افتراضية
-    this.specialty = 'Cardiologist', // قيمة افتراضية
-  });
+class PatientChatScreen extends StatelessWidget {
+  const PatientChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.5,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
-          ), // للرجوع للخلف
-        ),
-        title: Row(
-          children: [
-            // صورة الطبيب (Avatar)
-            const CircleAvatar(
-              backgroundColor: Colors.grey,
-              // يمكنك استخدام Image.asset أو NetworkImage هنا
-              child: Text('SJ'), // اختصار الاسم إذا لم تتوفر صورة
-            ),
-            const SizedBox(width: 10),
-            // تفاصيل الطبيب
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  doctorName,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  specialty,
-                  style: const TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-
-      // جسم الصفحة (الفقرات والمحادثات)
-      body: Column(
-        children: <Widget>[
-          // منطقة عرض الرسائل
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(10.0),
-              children: const <Widget>[
-                // مثال على الرسائل (يمكن استبدالها بقائمة رسائل ديناميكية)
-                MessageBubble(
-                  text: 'Hello! How can I help you today?',
-                  time: '10:30 AM',
-                  isMe: false,
-                ),
-                MessageBubble(
-                  text:
-                      'Hi Doctor, I\'ve been experiencing some chest discomfort lately.',
-                  time: '10:32 AM',
-                  isMe: true,
-                ),
-                MessageBubble(
-                  text:
-                      'I understand. Can you describe the discomfort? When did it start?',
-                  time: '10:33 AM',
-                  isMe: false,
-                ),
-                MessageBubble(
-                  text:
-                      'It started about 3 days ago. It\'s a mild pain that comes and goes.',
-                  time: '10:35 AM',
-                  isMe: true,
-                ),
-                MessageBubble(
-                  text:
-                      'I see. I\'d recommend scheduling an in-person consultation so we can run some tests. Would you like to book an appointment?',
-                  time: '10:37 AM',
-                  isMe: false,
-                ),
-              ],
-            ),
-          ),
-
-          // حقل إدخال الرسالة
-          _buildMessageInput(),
-        ],
-      ),
-    );
-  }
-
-  // دالة بناء حقل إدخال الرسالة
-  Widget _buildMessageInput() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      backgroundColor: Colors.grey.shade100,
+    appBar: AppBar(
+  elevation: 0,
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()),
+      );
+    },
+  ),
+  title: const Text(
+    "Chats",
+    style: TextStyle(
       color: Colors.white,
-      child: Row(
-        children: <Widget>[
-          // أيقونة المشبك (لإرفاق ملفات)
-          IconButton(
-            icon: const Icon(Icons.attach_file, color: Colors.grey),
-            onPressed: () {
-              // منطق إرفاق الملفات
-            },
-          ),
-          // حقل النص
-          const Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Type a message...',
-                border: InputBorder.none,
-              ),
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  flexibleSpace: Container(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xff39ab4a), Color(0xff009f93)],
+        begin: Alignment.bottomRight,
+        end: Alignment.topLeft,
+      ),
+    ),
+  ),
+),
+
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: chatData.length,
+        itemBuilder: (context, index) {
+          final chat = chatData[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: ChatTile(
+              name: chat['name']!,
+              message: chat['message']!,
             ),
-          ),
-          // زر الإرسال
-          IconButton(
-            icon: const Icon(
-              Icons.send,
-              color: Color(0xFF1ABC9C),
-            ), // نفس لون الزر السابق
-            onPressed: () {
-              // منطق إرسال الرسالة
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
 }
 
-// -------------------------------------------------------------------
+class ChatTile extends StatelessWidget {
+  final String name;
+  final String message;
 
-// مكون فقاعة الرسالة القابلة لإعادة الاستخدام (Message Bubble Widget)
-class MessageBubble extends StatelessWidget {
-  final String text;
-  final String time;
-  final bool isMe;
-
-  const MessageBubble({
-    super.key,
-    required this.text,
-    required this.time,
-    required this.isMe,
-  });
+  const ChatTile({super.key, required this.name, required this.message});
 
   @override
   Widget build(BuildContext context) {
-    // محاذاة الفقاعة (يمين إذا كانت مني، يسار إذا كانت من الطرف الآخر)
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Column(
-        crossAxisAlignment: isMe
-            ? CrossAxisAlignment.end
-            : CrossAxisAlignment.start,
-        children: <Widget>[
-          Material(
-            elevation: 2.0,
-            borderRadius: BorderRadius.only(
-              topLeft: const Radius.circular(15.0),
-              topRight: const Radius.circular(15.0),
-              // تحديد انحناء الزاوية السفلية بناءً على المرسل
-              bottomLeft: isMe
-                  ? const Radius.circular(15.0)
-                  : const Radius.circular(3.0),
-              bottomRight: isMe
-                  ? const Radius.circular(3.0)
-                  : const Radius.circular(15.0),
-            ),
-            color: isMe
-                ? const Color(0xFF2ECC71)
-                : Colors.white, // ألوان الفقاعات
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10.0,
-                horizontal: 15.0,
-              ),
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: isMe ? Colors.white : Colors.black87,
-                  fontSize: 15.0,
-                ),
-              ),
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 3,
+      shadowColor: Colors.black12,
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        leading: Container(
+          width: 50,
+          height: 50,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [Color(0xff39ab4a), Color(0xff009f93)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
           ),
-          // الوقت أسفل الرسالة
-          Padding(
-            padding: EdgeInsets.only(
-              top: 4.0,
-              right: isMe ? 8.0 : 0,
-              left: isMe ? 0 : 8.0,
-            ),
-            child: Text(
-              time,
-              style: const TextStyle(fontSize: 12.0, color: Colors.grey),
-            ),
-          ),
-        ],
+          child: const Icon(Icons.person, color: Colors.white, size: 28),
+        ),
+        title: Text(
+          name,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        subtitle: Text(
+          message,
+          style: TextStyle(color: Colors.grey.shade700),
+        ),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
+        onTap: () {},
       ),
     );
   }
 }
+
+// بيانات تجريبية للدردشة
+final List<Map<String, String>> chatData = [
+  {"name": "Dr. Madeline Ross", "message": "Doctor, I need help with pain"},
+  {"name": "Dr. Hannah Morgan", "message": "When is my appointment?"},
+  {"name": "Dr. Harper Lawson", "message": "Thank you doctor ❤️"},
+  {"name": "Dr. Natalie Cooper", "message": "Thank you doctor ❤️"},
+  {"name": "Dr. Benjamin Cole", "message": "Thank you doctor ❤️"},
+];

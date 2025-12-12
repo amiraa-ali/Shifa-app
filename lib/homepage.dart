@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shifa/categories_card.dart';
-import 'Booking.dart';
+import 'package:nav1/Doctorpage.dart';
+import 'package:nav1/categories_card.dart';
+import 'package:nav1/setting_page.dart';
+import 'package:nav1/welcome.dart';
+// import 'Booking.dart';
 import 'doctor_card.dart';
 import 'patient_chat_screen.dart';
 import 'profile.dart';
-import 'doctor_home_screen.dart';
+// import 'doctor_home_screen.dart';
 
 // Model
 class Category {
@@ -67,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final pages = [
     SizedBox.shrink(),
-    ChatScreen(),
+    PatientChatScreen(),
     AllCategoriesPage(),
     ProfilePage(),
   ];
@@ -207,11 +210,11 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: const Icon(Icons.medical_services, color: Colors.blueGrey),
             title: const Text('Switch to Doctor View (Test)'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => DoctorHomeScreen()),
-              );
+              // Navigator.pop(context);
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (_) => DoctorHomeScreen()),
+              // );
             },
           ),
 
@@ -223,13 +226,23 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Color(0xFF1ABC9C),
             ),
             title: const Text('Settings'),
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
+            },
           ),
 
           ListTile(
             leading: const Icon(Icons.logout, color: Colors.redAccent),
             title: const Text('Logout'),
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -360,6 +373,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     setState(() {
                       _categoryIndex = i;
                     });
+
+                    if (category.title.toLowerCase() == 'all') {
+                      // لو All → صفحة الكاتجوري
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const AllCategoriesPage(),
+                        ),
+                      );
+                    } else {
+                      // أي تخصص → صفحة الدكاترة مع فلتر
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => DoctorsPage(
+                            categoryName: category.title,
+                            doctors: doctors,
+                          ),
+                        ),
+                      );
+                    }
                   },
                   child: Container(
                     margin: const EdgeInsets.only(right: 15),

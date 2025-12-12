@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nav1/Details.dart';
+import 'package:nav1/Doctorpage.dart';
 // يجب تغيير هذا الاستيراد ليناسب صفحة تفاصيل الطبيب لديك
 // import '../screens/doctor_details_screen.dart'; // افترض وجود صفحة تفاصيل هنا
 
@@ -202,9 +204,24 @@ class DoctorCard extends StatelessWidget {
                 ),
               ),
               child: ElevatedButton(
-                onPressed: () {
-                  // منطق الانتقال لصفحة الحجز (Booking/Appointment)
-                },
+               onPressed: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => DoctorDetailsPage(
+        doctor: Doctor(
+          name: name,
+          specialty: specialty,
+          rating: rating,
+          yearsExp: yearsExp,
+          location: location,
+          distance: distance,
+          // imagePath: imagePath,
+        ),
+      ),
+    ),
+  );
+},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   shadowColor: Colors.transparent,

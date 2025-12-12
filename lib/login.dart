@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:nav1/forgetPassword.dart';
 import 'SignUp.dart';
 import 'doctor_home_screen.dart';
 import 'homepage.dart';
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+ bool isvisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 Image.asset(
-                  'images/logo.png',
+                  'assets/logo remover.png',
                   // fit:BoxFit.fill ,
                 ),
 
@@ -55,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                       return "Email or phone is required";
                     }
 
-                    if (RegExp(r'^[0-9]+$').hasMatch(value)) {
-                      if (value.length != 11) {
+                    if (RegExp(r'^01[0-9]+$').hasMatch(value)) {
+                      if (value.length != 11 ) {
                         return "Enter valid phone number";
                       }
                     } else if (RegExp(r'^[a-zA-Z0-9@._-]+$').hasMatch(value)) {
@@ -74,28 +75,56 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 15),
 
                 //////////////////////////////////////////////
-                TextFormField(
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    hintText: "Enter your password",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+               TextFormField(
+                      controller: passwordController,
+                      obscureText: !isvisible,
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        hintText: "Enter your password",
+                        prefixIcon: const Icon(Icons.lock_outline),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(color: Colors.teal),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(color: Colors.teal),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Colors.teal,
+                            width: 2,
+                          ),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isvisible ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isvisible = !isvisible;
+                            });
+                          },
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) return "Password is required";
+                        if (value.length < 6) return "At least 6 characters";
+                        return null;
+                      },
                     ),
-                    prefixIcon: Icon(Icons.lock), // ← هنا بنحط الأيقونة
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) return "Password is required";
-                    if (value.length < 6) return "At least 6 characters";
-                    return null;
-                  },
-                ),
                 ////////////////////////////////////////////////////////////
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+  //                      Navigator.push(
+  //   context,
+  //   // MaterialPageRoute(builder: (context) => const ForgetPasswordPage()),
+  // );
+                    },
                     child: const Text(
                       "Forgot Password?",
                       style: TextStyle(color: Colors.teal),

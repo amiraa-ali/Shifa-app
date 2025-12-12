@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shifa/homepage.dart';
+import 'package:nav1/homepage.dart';
 import 'doctor_home_screen.dart';
 import 'login.dart';
 
@@ -75,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: 200,
                       child: Image.asset(
-                        "images/logo.png",
+                        "assets/logo remover.png",
                         fit: BoxFit.contain,
                       ),
                     ),

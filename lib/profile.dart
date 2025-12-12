@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -23,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   // int _selectedIndex = 3;
   final _formKey = GlobalKey<FormState>();
 
-  final emailController = TextEditingController(text: '$UserName@example.com');
+  final emailController = TextEditingController(text: 'Amira@example.com');
   final phoneController = TextEditingController(text: '01234567890');
   final locationController = TextEditingController(text: 'New York, NY');
   final dobController = TextEditingController(text: 'Jan 15, 1988');

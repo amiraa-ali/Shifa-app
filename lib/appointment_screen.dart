@@ -168,7 +168,8 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                     ),
                   ],
                 ),
-              ),
+              ),  
+              const Spacer(),
               const TabBar(
                 indicatorSize: TabBarIndicatorSize.label,
                 indicatorColor: Colors.white,

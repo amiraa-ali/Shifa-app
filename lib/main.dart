@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shifa/welcome.dart';
+// import 'package:nav1/doctor_home_screen.dart';
+// import 'package:nav1/homepage.dart';
+import 'package:nav1/welcome.dart';
 // import 'homepage.dart';
 
-const String UserName = "Amira Ali ";
+
 
 void main() {
   runApp(const ShifaApp());
@@ -15,7 +17,6 @@ class ShifaApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: WelcomeScreen(),
-      // home: HomeScreen(),
     );
   }
 }

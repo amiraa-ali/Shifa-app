@@ -47,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset("images/logo.png", fit: BoxFit.cover),
+                Image.asset("assets/logo remover.png", fit: BoxFit.cover),
                 const SizedBox(height: 10),
                 const Text(
                   "Your Smart Health Companion",
