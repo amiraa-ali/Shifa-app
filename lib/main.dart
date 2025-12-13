@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:nav1/welcome.dart';
 // import 'homepage.dart';
 
-
-
 void main() {
   runApp(const ShifaApp());
 }

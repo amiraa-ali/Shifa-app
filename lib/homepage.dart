@@ -35,6 +35,8 @@ final List<Map<String, dynamic>> doctorslist = [
     'location': 'City Hospital',
     'distance': 2.5,
     'imagePath': 'assets/images/doc1.png',
+    'price': 300,
+    
   },
   {
     'name': 'Dr. Michael Chen',
@@ -44,6 +46,7 @@ final List<Map<String, dynamic>> doctorslist = [
     'location': 'Memorial Clinic',
     'distance': 1.8,
     'imagePath': 'assets/images/doc2.png',
+     'price': 300,
   },
   {
     'name': 'Dr. Emily Roberts',
@@ -53,6 +56,7 @@ final List<Map<String, dynamic>> doctorslist = [
     'location': 'Health Center',
     'distance': 3.1,
     'imagePath': 'assets/images/doc3.png',
+     'price': 300,
   },
 ];
 
@@ -148,6 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
               location: doc['location'],
               distance: doc['distance'],
               imagePath: doc['imagePath'],
+              price: doc['price'],
             ),
           ),
 

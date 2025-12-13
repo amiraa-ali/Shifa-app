@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nav1/forget_password.dart';
 // import 'package:nav1/forgetPassword.dart';
 import 'SignUp.dart';
 import 'doctor_home_screen.dart';
@@ -73,7 +74,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(height: 15),
-
                 //////////////////////////////////////////////
                TextFormField(
                       controller: passwordController,
@@ -120,10 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-  //                      Navigator.push(
-  //   context,
-  //   // MaterialPageRoute(builder: (context) => const ForgetPasswordPage()),
-  // );
+                       Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const SetNewPasswordScreen()),
+  );
                     },
                     child: const Text(
                       "Forgot Password?",

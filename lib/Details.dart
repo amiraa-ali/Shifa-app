@@ -9,79 +9,38 @@ class DoctorDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // const gradientColorStart = Color(0xff39ab4a);
     const gradientColorEnd = Color(0xff009f93);
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-  elevation: 0,
-  leading: IconButton(
-    icon: const Icon(Icons.arrow_back, color: Colors.white),
-   onPressed: () {
-  Navigator.pop(context); // بيرجع للصفحة السابقة بدل HomeScreen
-},
-  ),
-  title: const Text(
-    "Details",
-    style: TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-    ),
-  ),
-  flexibleSpace: Container(
-    decoration: const BoxDecoration(
-      gradient: LinearGradient(
-        colors: [Color(0xff39ab4a), Color(0xff009f93)],
-        begin: Alignment.bottomRight,
-        end: Alignment.topLeft,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text(
+          "Details",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xff39ab4a), Color(0xff009f93)],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
+          ),
+        ),
       ),
-    ),
-  ),
-),
+
       body: Column(
         children: [
-          // ================= HEADER =================
-          // Container(
-          //   height: 180,
-          //   width: double.infinity,
-          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-          //   decoration: const BoxDecoration(
-          //     gradient: LinearGradient(
-          //       colors: [gradientColorStart, gradientColorEnd],
-          //       begin: Alignment.bottomRight,
-          //       end: Alignment.topLeft,
-          //     ),
-          //     borderRadius: BorderRadius.only(
-          //       bottomLeft: Radius.circular(30),
-          //       bottomRight: Radius.circular(30),
-          //     ),
-          //   ),
-          //   child: SafeArea(
-          //     child: Row(
-          //       children: [
-          //         InkWell(
-          //           onTap: () => Navigator.pop(context),
-          //           child: const CircleAvatar(
-          //             backgroundColor: Colors.white24,
-          //             child: Icon(Icons.arrow_back, color: Colors.white),
-          //           ),
-          //         ),
-          //         const Spacer(),
-          //         // const Text(
-          //         //   "Details",
-          //         //   style: TextStyle(
-          //         //     color: Colors.white,
-          //         //     fontSize: 20,
-          //         //     fontWeight: FontWeight.bold,
-          //         //   ),
-          //         // ),
-          //         const Spacer(flex: 2),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-
           const SizedBox(height: 20),
 
           // ================= DOCTOR NAME =================
@@ -94,7 +53,46 @@ class DoctorDetailsPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          Text(doctor.specialty, style: const TextStyle(color: Colors.grey)),
+          Text(
+            doctor.specialty,
+            style: const TextStyle(color: Colors.grey),
+          ),
+
+          const SizedBox(height: 20),
+
+          // ================= PRICE CARD =================
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xff39ab4a), Color(0xff009f93)],
+                begin: Alignment.bottomRight,
+                end: Alignment.topLeft,
+              ),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Consultation Price",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  "${doctor.price} EGP",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
 
           const SizedBox(height: 20),
 
@@ -125,10 +123,9 @@ class DoctorDetailsPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          "${doctor.name} is the top most immunologists specialist in "
-                          "Christ Hospital at London. He achieved several awards "
-                          "for her wonderful contribution in medical field. "
-                          "He is available for private consultation.",
+                          "${doctor.name} is the top most immunologists specialist. "
+                          "He achieved several awards for wonderful contribution "
+                          "in medical field and is available for private consultation.",
                           style: const TextStyle(color: Colors.grey),
                         ),
                       ],
@@ -183,8 +180,14 @@ class DoctorDetailsPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (_) => const BookAppointmentPage(),
+                    MaterialPageRoute(builder: (_) => BookAppointmentPage(
+  doctorName: doctor.name,
+  doctorSpecialty: doctor.specialty,
+  clinicLocation: doctor.location, // لو عندك property للمكان
+  serviceType: doctor.specialty,       // لو عندك نوع الخدمة
+  totalAmount: doctor.price.toString(),  // السعر ك string
+),
+
                     ),
                   );
                 },

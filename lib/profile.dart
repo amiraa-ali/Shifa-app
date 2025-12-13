@@ -29,11 +29,11 @@ class _ProfilePageState extends State<ProfilePage> {
   final nameController = TextEditingController();
 
   final Map<String, Map<String, dynamic>> medicalSelected = {
-    'Hypertension': {'checked': false, 'year': '2022', 'status': 'Managed'},
+    'Hypertension': {'checked': false, 'year': '2022', 'status': 'Edit'},
     'Type 2 Diabetes': {
       'checked': false,
       'year': '2021',
-      'status': 'Controlled',
+      'status': 'Edit',
     },
   };
 

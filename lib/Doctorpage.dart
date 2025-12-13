@@ -9,6 +9,7 @@ class Doctor {
   final int yearsExp;
   final String location;
   final double distance;
+  final double price;
 
   Doctor({
     required this.name,
@@ -17,6 +18,7 @@ class Doctor {
     required this.yearsExp,
     required this.location,
     required this.distance,
+    required this.price
   });
 }
 
@@ -24,43 +26,43 @@ class Doctor {
 // ✔️ دكاترة – بعد تصحيح التخصصات
 // --------------------------------------------
 final List<Doctor> doctors = [
-  Doctor(name: 'Dr. Amira Ali', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Shorouk Abdelaleem', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Wafaa Hamada', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Doha Ahmed', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Zeyad Hassanien', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Sarah Johnson', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Natalie Cooper', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
+  Doctor(name: 'Dr. Amira Ali', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Shorouk Abdelaleem', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Wafaa Hamada', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Doha Ahmed', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Zeyad Hassanien', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Sarah Johnson', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Natalie Cooper', specialty: 'Cardiology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
 
   // Dermatology
-  Doctor(name: 'Dr. William Archer', specialty: 'Dermatology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5),
-  Doctor(name: 'Dr. Harper Lawson', specialty: 'Dermatology', rating: 4.8, yearsExp: 15, location: 'Memorial Clinic', distance: 1.8),
-  Doctor(name: 'Dr. Benjamin Cole', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Grace Mitchell', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Samuel Foster', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
+  Doctor(name: 'Dr. William Archer', specialty: 'Dermatology', rating: 4.9, yearsExp: 12, location: 'City Hospital', distance: 2.5, price: 200),
+  Doctor(name: 'Dr. Harper Lawson', specialty: 'Dermatology', rating: 4.8, yearsExp: 15, location: 'Memorial Clinic', distance: 1.8, price: 200),
+  Doctor(name: 'Dr. Benjamin Cole', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Grace Mitchell', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Samuel Foster', specialty: 'Dermatology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
 
   // Neurology
-  Doctor(name: 'Dr. Lily Anderson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Noah Patterson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Emma Collins', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Henry Phillips', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Ava Thompson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Oliver Hayes', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Hannah Morgan', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
+  Doctor(name: 'Dr. Lily Anderson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Noah Patterson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Emma Collins', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Henry Phillips', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Ava Thompson', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Oliver Hayes', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Hannah Morgan', specialty: 'Neurology', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
 
   // Pediatrics
-  Doctor(name: 'Dr. Madeline Ross', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Adrian Blake', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Stella Hughes', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Carter Reynolds', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
+  Doctor(name: 'Dr. Madeline Ross', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Adrian Blake', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Stella Hughes', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Carter Reynolds', specialty: 'Pediatrics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
 
   // Orthopedics
-  Doctor(name: 'Dr. Isabella Monroe', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Felix Grant', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Zoe Parker', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Miles Donovan', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Evelyn Hart', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
-  Doctor(name: 'Dr. Julian Cross', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1),
+  Doctor(name: 'Dr. Isabella Monroe', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Felix Grant', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Zoe Parker', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Miles Donovan', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Evelyn Hart', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
+  Doctor(name: 'Dr. Julian Cross', specialty: 'Orthopedics', rating: 4.7, yearsExp: 8, location: 'Health Center', distance: 3.1, price: 200),
 ];
 
 class DoctorsPage extends StatelessWidget {
