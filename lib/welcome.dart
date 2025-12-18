@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'SignUp.dart';
-import 'login.dart';
+import 'package:nav1/patient_login.dart';
+import 'patient_signup.dart';
+import 'doctor_login.dart';
 
 void main() {
   runApp(
@@ -69,7 +70,7 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => const PatientLogin(),
                         ),
                       );
                     },
@@ -82,7 +83,7 @@ class WelcomeScreen extends StatelessWidget {
                       elevation: 3,
                     ),
                     child: const Text(
-                      "Login",
+                      "Patient",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -99,7 +100,7 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpPage(),
+                          builder: (context) => const doctorLogin (),
                         ),
                       );
                     },
@@ -113,7 +114,7 @@ class WelcomeScreen extends StatelessWidget {
                       elevation: 3,
                     ),
                     child: const Text(
-                      "Signup",
+                      "Doctor",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
